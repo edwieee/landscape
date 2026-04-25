@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Leaf, ArrowRight, Star, ChevronDown, CheckCircle2, MapPin, Mail, Phone, Users, Hammer, DollarSign, Clock, Heart } from 'lucide-react';
+import { Menu, X, Leaf, ArrowRight, Star, ChevronDown, CheckCircle2, MapPin, Mail, Phone, Users, Hammer, DollarSign, Clock, Heart } from 'lucide-react';
+import HeroImage from './Images/hero image.jpg';
 
 const FadeIn = ({ children, delay = 0 }) => (
   <motion.div
@@ -16,6 +17,7 @@ const FadeIn = ({ children, delay = 0 }) => (
 const App = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeFaq, setActiveFaq] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,46 +68,56 @@ const App = () => {
 
   return (
     <>
-      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-        <div className="nav-content">
-          <div className="logo d-flex">
-            <span style={{ color: 'var(--primary)' }}>Green</span>ora
+      <nav className={`hero-navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="hero-nav-content">
+          <div className="hero-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px' }}><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+            Greenora
           </div>
-          <div className="nav-links">
-            <a href="#about" className="nav-link">About</a>
-            <a href="#services" className="nav-link">Services</a>
-            <a href="#works" className="nav-link">Works</a>
-            <a href="#contact" className="nav-link">Contact</a>
+
+          <div className="hero-hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X color="#fff" /> : <Menu color="#fff" />}
           </div>
-          <a href="#contact" className="btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.9rem' }}>
-            Get it for free
-          </a>
+
+          <div className={`hero-nav-links ${mobileMenuOpen ? 'open' : ''}`}>
+            <a href="#about" className="hero-nav-link" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href="#services" className="hero-nav-link" onClick={() => setMobileMenuOpen(false)}>Services</a>
+            <a href="#works" className="hero-nav-link" onClick={() => setMobileMenuOpen(false)}>Works</a>
+            <a href="#contact" className="hero-nav-link" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+          </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="hero section">
-        <div className="container hero-content">
-          <FadeIn>
-            <div className="hero-stats">
-              <div className="label">
-                <Star size={16} fill="#eab308" color="#eab308" />
-                100+ 5 Star Rating
+      <section className="hero-section" style={{ backgroundImage: `url("${HeroImage}")` }}>
+        <div className="hero-overlay"></div>
+        <div className="hero-container">
+          <div className="hero-content-inner">
+            <FadeIn>
+              <div className="hero-badge">
+                <div className="hero-stars">
+                  <Star size={14} fill="#FFD700" color="#FFD700" />
+                  <Star size={14} fill="#FFD700" color="#FFD700" />
+                  <Star size={14} fill="#FFD700" color="#FFD700" />
+                  <Star size={14} fill="#FFD700" color="#FFD700" />
+                  <Star size={14} fill="#FFD700" color="#FFD700" />
+                </div>
+                <span className="hero-badge-text">100+ 5 Star Rating</span>
               </div>
-            </div>
-            <h1 className="h1" style={{ marginBottom: "2rem" }}>
-              We provide complete, reliable, and affordable landscaping solutions across the USA — from design to maintenance, ensuring your outdoor spaces are built to last.
-            </h1>
-            <a href="#contact" className="btn-primary">
-              Work with us <ArrowRight size={18} />
-            </a>
-          </FadeIn>
-          
-          <FadeIn delay={0.2}>
-            <div className="hero-image-wrap">
-              <img src="https://images.unsplash.com/photo-1558904541-efa843a96f0f?auto=format&fit=crop&q=80&w=1200" alt="Beautiful landscaping hero" />
-            </div>
-          </FadeIn>
+              <h1 className="hero-title">
+                Your trusted partner for<br />exceptional landscaping
+              </h1>
+              <p className="hero-description">
+                We provide complete, reliable, and affordable landscaping solutions across the USA — from design to maintenance, ensuring your outdoor spaces are built to last.
+              </p>
+              <a href="#contact" className="hero-cta">
+                Work with us
+                <span className="hero-cta-icon-wrap">
+                  <ArrowRight size={18} color="#000000" strokeWidth={2.5} />
+                </span>
+              </a>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -222,7 +234,7 @@ const App = () => {
             <div className="overline text-gray" style={{ marginBottom: "1rem" }}>(works)</div>
             <h2 className="h2 text-center" style={{ textAlign: "center", marginBottom: "4rem" }}>A Look at Our Completed Projects</h2>
           </FadeIn>
-          
+
           <div className="grid-3">
             {projects.map((proj, idx) => (
               <FadeIn key={idx} delay={idx * 0.1}>
@@ -276,9 +288,9 @@ const App = () => {
                   </div>
                   <AnimatePresence>
                     {activeFaq === idx && (
-                      <motion.div 
-                        initial={{ height: 0, opacity: 0 }} 
-                        animate={{ height: "auto", opacity: 1 }} 
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         style={{ overflow: "hidden" }}
                       >
@@ -300,7 +312,7 @@ const App = () => {
             <div>
               <div className="overline text-gray" style={{ marginBottom: "1rem" }}>(contact)</div>
               <h2 className="h2" style={{ marginBottom: "4rem", maxWidth: "400px" }}>Let's Talk About Your Project</h2>
-              
+
               <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
                 <div style={{ display: "flex", gap: "1.2rem", alignItems: "center" }}>
                   <div className="contact-icon"><Mail size={20} /></div>
@@ -329,7 +341,7 @@ const App = () => {
                 <div style={{ fontSize: "1.1rem", fontWeight: "600", marginBottom: "1rem" }}>Follow Us</div>
                 <div style={{ display: "flex", gap: "1rem" }}>
                   <a href="#" className="social-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" /></svg>
                   </a>
                   <a href="#" className="social-icon">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
