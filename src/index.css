@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   --bg: #f8f9f7;
@@ -268,8 +268,8 @@ button {
   color: #FFFFFF;
   font-family: 'Inter', sans-serif;
   font-size: 68px;
-  font-weight: 700;
-  line-height: 1.1;
+  font-weight: 800;
+  line-height: 1.05;
   letter-spacing: -2.5px;
   max-width: 800px;
   margin-top: 20px;
@@ -283,7 +283,7 @@ button {
   line-height: 1.6;
   letter-spacing: -0.2px;
   color: #FFFFFF;
-  max-width: 580px;
+  max-width: 680px;
   margin-top: 24px;
   margin-bottom: 0;
 }
@@ -296,11 +296,11 @@ button {
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-weight: 600;
-  padding: 8px 8px 8px 24px;
+  padding: 8px 8px 8px 28px;
   border-radius: 999px;
   border: none;
-  gap: 12px;
-  margin-top: 32px;
+  gap: 16px;
+  margin-top: 40px;
   align-self: flex-start;
   transition: all 0.3s ease;
 }
