@@ -96,11 +96,11 @@ const App = () => {
             <FadeIn>
               <div className="hero-badge">
                 <div className="hero-stars">
-                  <Star size={14} fill="#FFD700" color="#FFD700" />
-                  <Star size={14} fill="#FFD700" color="#FFD700" />
-                  <Star size={14} fill="#FFD700" color="#FFD700" />
-                  <Star size={14} fill="#FFD700" color="#FFD700" />
-                  <Star size={14} fill="#FFD700" color="#FFD700" />
+                  <Star size={16} fill="#FACC15" color="#FACC15" />
+                  <Star size={16} fill="#FACC15" color="#FACC15" />
+                  <Star size={16} fill="#FACC15" color="#FACC15" />
+                  <Star size={16} fill="#FACC15" color="#FACC15" />
+                  <Star size={16} fill="#FACC15" color="#FACC15" />
                 </div>
                 <span className="hero-badge-text">100+ 5 Star Rating</span>
               </div>
