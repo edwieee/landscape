@@ -255,7 +255,7 @@ const App = () => {
       </section>
 
       {/* Testimonial */}
-      <section className="section" style={{ backgroundColor: "#0E2116", color: "var(--white)" }}>
+      <section className="section" style={{ backgroundColor: "#152B1E", color: "var(--white)" }}>
         <div className="container">
           <FadeIn>
             <div className="overline" style={{ color: "var(--green-light)", marginBottom: "2rem", textAlign: "center" }}>(testimonial)</div>
