@@ -119,14 +119,24 @@ button {
   font-weight: 500;
   font-size: 0.95rem;
   color: var(--fg);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   background: transparent;
+}
+
+.btn-outline svg {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-outline:hover {
   border-color: var(--fg);
   background: var(--fg);
   color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline:hover svg {
+  transform: translateX(4px);
 }
 
 /* HERO TYPOGRAPHY - MATCH IMAGE EXACTLY */
@@ -342,12 +352,13 @@ button {
   gap: 12px;
   margin-top: 28px;
   align-self: flex-start;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .hero-cta:hover {
-  background-color: #2bda3a;
-  transform: scale(1.05);
+  background-color: #35db43;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(61, 237, 76, 0.25);
 }
 
 .hero-cta-icon-wrap {
@@ -358,6 +369,11 @@ button {
   height: 32px;
   background-color: #ffffff;
   border-radius: 50%;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-cta:hover .hero-cta-icon-wrap {
+  transform: translateX(3px);
 }
 
 /* Grid Layouts */
@@ -708,13 +724,14 @@ button {
   color: #111;
   border-radius: 2rem;
   font-weight: 600;
-  transition: all 0.3s ease;
   gap: 0.8rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-primary-green:hover {
+  background-color: #35db43;
   transform: translateY(-2px);
-  background-color: #2bda3a;
+  box-shadow: 0 8px 24px rgba(61, 237, 76, 0.25);
 }
 
 .arrow-circle {
@@ -725,6 +742,11 @@ button {
   height: 32px;
   background-color: var(--white);
   border-radius: 50%;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary-green:hover .arrow-circle {
+  transform: translateX(3px);
 }
 
 .feature-card-new {
