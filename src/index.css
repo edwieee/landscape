@@ -60,9 +60,8 @@ button {
 
 .container {
   width: 100%;
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 0 5%;
+  padding-left: 96px;
+  padding-right: 96px;
 }
 
 @media (max-width: 768px) {
@@ -70,7 +69,8 @@ button {
     padding: 5rem 0;
   }
   .container {
-    padding: 0 24px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }
 
